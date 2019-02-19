@@ -6,8 +6,9 @@ export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   devServer: {
     proxy: {
-      // '/.netlify/functions': {
+      // '/.netlify/functions': { // old
       '/quiz': {
+        // this doesnt really work :(
         target: 'http://localhost:9000',
         pathRewrite: {
           '^/\\.netlify/functions/react-express-ssr': ''

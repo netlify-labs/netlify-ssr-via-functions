@@ -1,5 +1,7 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
 export default function Data() {
-  return fetch('https://jsonplaceholder.typicode.com/users').then(data => data.json())
+  return fetch('http://jservice.io/api/categories?count=5').then(data =>
+    data.json()
+  );
 }

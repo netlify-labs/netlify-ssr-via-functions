@@ -1,20 +1,34 @@
-import React from "react"
+import React from 'react';
 
-const App = (props) => {
-  const list = props.data.map((user) => {
+const App = props => {
+  const list = props.data.map(category => {
     return (
-      <li>{user.name}</li>
-    )
-  })
+      <li key={category.id}>
+        {titleCase(category.title)} (Questions: {category.clues_count})
+      </li>
+    );
+  });
 
   return (
     <div>
-      <h1 onClick={() => { console.log('hi') }}>
-        This is SSR React!
+      <h1
+        onClick={() => {
+          console.log('hi');
+        }}
+      >
+        Let's play Jeopardy!
       </h1>
       {list}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
+function titleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+  }
+  return str.join(' ');
+}
