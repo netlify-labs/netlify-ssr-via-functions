@@ -1,5 +1,5 @@
 import * as netlifyLogo from './netlify-logo-black.svg';
-import * as expressLogo from './express.png';
+// import * as expressLogo from './express.png';
 import React from 'react';
 import { Root, Routes } from 'react-static';
 // import { Link } from '@reach/router';
@@ -23,8 +23,8 @@ function App() {
           <header className="App-header">
             <div className="logo-wrapper">
               <img src={netlifyLogo} className="netlify-logo" alt="logo" />
-              <span className="and">+</span>
-              <img src={expressLogo} className="express-logo" alt="logo" />
+              {/* <span className="and">+</span>
+              <img src={expressLogo} className="express-logo" alt="logo" /> */}
             </div>
             <h1 className="App-title">
               Static + Serverless Server Side Rendering
@@ -32,15 +32,6 @@ function App() {
           </header>
         </FancyDiv>
 
-        <p className="App-intro">
-          <h2>Choose an example</h2>
-        </p>
-
-        <div className="content">
-          <a className="link" href="/quiz">
-            Lets Play Jeopardy
-          </a>
-        </div>
         <Routes />
       </div>
     </Root>

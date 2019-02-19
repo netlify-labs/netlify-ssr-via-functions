@@ -3,17 +3,14 @@ import { withSiteData } from 'react-static';
 
 export default withSiteData(() => (
   <div style={{ textAlign: 'center' }}>
-    <h1>
-      Welcome to React-Static <br /> + TypeScript
-    </h1>
-    <p>
-      Learn{' '}
-      <a href="https://github.com/sw-yx/react-typescript-cheatsheet">
-        React + TypeScript
+    <p className="App-intro">
+      <h2>Choose an example</h2>
+    </p>
+
+    <div className="content">
+      <a className="link" href="/quiz">
+        Lets Play Jeopardy
       </a>
-    </p>
-    <p>
-      <a href="https://twitter.com/swyx">Report issues with this template</a>
-    </p>
+    </div>
   </div>
 ));
