@@ -5,3 +5,9 @@
   publish = "build"
   # functions build directory
   functions = "functions-build"
+
+   
+[[redirects]]
+  from = "/quiz/*"
+  to = "/.netlify/functions/react-express-ssr/:splat"
+  status = 200
