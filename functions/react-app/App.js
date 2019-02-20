@@ -20,8 +20,12 @@ const App = ({ data }) => {
   return (
     <div className="App">
       <nav>
-        {offset !== 0 ? <a href={`/characters/${prevNum}`}>Previous</a> : 🤷🏼‍♂}
-        {!!nextNum ? <a href={`/characters/${nextNum}`}>Next >></a> : No more pages}
+        {offset !== 0 ? <a href={`/characters/${prevNum}`}>Previous</a> : ''}
+        {!!nextNum ? (
+          <a href={`/characters/${nextNum}`}>Next >></a>
+        ) : (
+          'No more pages'
+        )}
       </nav>
       <h1
         onClick={() => {

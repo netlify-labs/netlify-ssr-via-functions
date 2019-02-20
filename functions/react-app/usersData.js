@@ -15,7 +15,7 @@ function makeRequest(endpoint, obj = defaultOpts) {
   const apikey = process.env.MARVEL_PUBLIC;
   const string4hash = ts + MARVEL_PRIVATE + apikey;
   const hash = md5(string4hash);
-  obj = Object.assign(obj, defaultOpts, { ts, apikey, hash });
+  obj = Object.assign(defaultOpts, obj, { ts, apikey, hash });
   return (
     'http://gateway.marvel.com/v1/public/' + endpoint + '?' + obj2string(obj)
   );

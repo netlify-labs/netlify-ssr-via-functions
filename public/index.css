@@ -1,5 +1,5 @@
 .App {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
   transition: all 0.5s ease;
 }
@@ -13,6 +13,11 @@
   color: #fff;
   font-size: 1.9rem;
   text-shadow: 1px 1px 1px grey;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
 }
 article {
   margin: 5px;

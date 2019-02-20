@@ -3,6 +3,7 @@ import React from 'react';
 
 export default function Card(props) {
   const { thumbnail, name, description } = props;
+  const desc = description.trim() || '(No description found)';
   const img =
     thumbnail.path.replace('http://', 'https://') + '.' + thumbnail.extension;
   return (
@@ -20,7 +21,7 @@ export default function Card(props) {
           <h3 className="title">{name}</h3>
 
           <div>
-            <p>{description}</p>
+            <p>{desc}</p>
           </div>
         </div>
       </article>

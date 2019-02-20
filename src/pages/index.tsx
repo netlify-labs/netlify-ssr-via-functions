@@ -9,7 +9,7 @@ export default withSiteData(() => (
 
     <div className="content">
       <a className="link" href="/characters">
-        Lets Play Jeopardy
+        See Marvel Characters
       </a>
     </div>
   </div>
