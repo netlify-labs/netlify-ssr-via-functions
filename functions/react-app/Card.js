@@ -3,7 +3,8 @@ import React from 'react';
 
 export default function Card(props) {
   const { thumbnail, name, description } = props;
-  const img = thumbnail.path + '.' + thumbnail.extension;
+  const img =
+    thumbnail.path.replace('http://', 'https://') + '.' + thumbnail.extension;
   return (
     <div className="Card">
       <article>

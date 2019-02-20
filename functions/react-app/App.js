@@ -18,7 +18,11 @@ const App = ({ data }) => {
   const prevNum = Math.max(offset - limit, 0);
   const nextNum = Math.min(offset + limit, total);
   return (
-    <div>
+    <div className="App">
+      <nav>
+        {offset !== 0 ? <a href={`/characters/${prevNum}`}>Previous</a> : 🤷🏼‍♂}
+        {!!nextNum ? <a href={`/characters/${nextNum}`}>Next >></a> : No more pages}
+      </nav>
       <h1
         onClick={() => {
           console.log('hi');
@@ -32,10 +36,6 @@ const App = ({ data }) => {
       {/* <a className="link" href={`/characters/${props.params.offset}`}>
         Next
       </a> */}
-      <div>
-        {prevNum && <a href={`/characters/${prevNum}`}>Previous</a>}
-        {nextNum && <a href={`/characters/${nextNum}`}>Next >></a>}
-      </div>
       <footer>
         <a href="http://marvel.com">Data provided by Marvel. © 2019 MARVEL</a>
       </footer>
