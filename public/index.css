@@ -1,5 +1,5 @@
 .App {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
   transition: all 0.5s ease;
 }
@@ -7,6 +7,29 @@
 .Card {
   flex: 1 1 400px;
   color: rgb(128, 128, 128);
+}
+.Card:hover,
+.Card:focus,
+.Card:active {
+  -webkit-animation-name: hvr-buzz;
+  animation-name: hvr-buzz;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+@keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
 }
 .title {
   margin: 0;
@@ -27,7 +50,7 @@ article {
   box-shadow: 0 1px 0 #c5cad8, 0 2px 3px #d4d8e3;
   display: flex;
   flex-flow: row nowrap;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .thumbnail {
   flex: 0 1 33%;

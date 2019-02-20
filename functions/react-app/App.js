@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './Card';
 
 const App = ({ data }) => {
-  // console.log('app props', { props });
   const { results, offset, total, limit } = data.data;
 
   const list = results.map(result => {
@@ -20,9 +19,9 @@ const App = ({ data }) => {
   return (
     <div className="App">
       <nav>
-        {offset !== 0 ? <a href={`/characters/${prevNum}`}>Previous</a> : ''}
+        {offset !== 0 ? <a href={`/characters/${prevNum}`}>◀ Previous</a> : ''}
         {!!nextNum ? (
-          <a href={`/characters/${nextNum}`}>Next >></a>
+          <a href={`/characters/${nextNum}`}>Next ▶</a>
         ) : (
           'No more pages'
         )}
@@ -32,7 +31,7 @@ const App = ({ data }) => {
           console.log('hi');
         }}
       >
-        All {total} Marvel Characters!
+        See {offset}-{nextNum} of {total} Marvel Characters!
       </h1>
       {list}
       {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
