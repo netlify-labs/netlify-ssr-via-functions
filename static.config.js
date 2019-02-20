@@ -2,12 +2,13 @@ import axios from 'axios';
 import path from 'path';
 
 export default {
+  siteRoot: 'https://netlify-sssr-react.netlify.com/',
   plugins: ['react-static-plugin-typescript'],
   entry: path.join(__dirname, 'src', 'index.tsx'),
   devServer: {
     proxy: {
       // '/.netlify/functions': { // old
-      '/quiz': {
+      '/characters': {
         // this doesnt really work :(
         target: 'http://localhost:9000',
         pathRewrite: {

@@ -8,7 +8,7 @@ export default withSiteData(() => (
     </p>
 
     <div className="content">
-      <a className="link" href="/quiz">
+      <a className="link" href="/characters">
         Lets Play Jeopardy
       </a>
     </div>

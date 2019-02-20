@@ -8,6 +8,6 @@
 
    
 [[redirects]]
-  from = "/quiz/*"
+  from = "/characters/*"
   to = "/.netlify/functions/react-express-ssr/:splat"
   status = 200

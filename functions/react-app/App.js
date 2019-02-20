@@ -1,14 +1,22 @@
 import React from 'react';
+import Card from './Card';
 
-const App = props => {
-  const list = props.data.map(category => {
+const App = ({ data }) => {
+  // console.log('app props', { props });
+  const { results, offset, total, limit } = data.data;
+
+  const list = results.map(result => {
+    const src = result.thumbnail.path + '.' + result.thumbnail.extension;
     return (
-      <li key={category.id}>
-        {titleCase(category.title)} (Questions: {category.clues_count})
-      </li>
+      // <li key={result.id}>
+      //   <h3>{result.name}</h3>
+      //   <img src={src} width={300} />
+      // </li>
+      <Card {...result} />
     );
   });
-
+  const prevNum = Math.max(offset - limit, 0);
+  const nextNum = Math.min(offset + limit, total);
   return (
     <div>
       <h1
@@ -16,9 +24,21 @@ const App = props => {
           console.log('hi');
         }}
       >
-        Let's play Jeopardy!
+        All {total} Marvel Characters!
       </h1>
       {list}
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
+      {/* <a className="link" href={`/characters/${props.params.offset}`}>
+        Next
+      </a> */}
+      <div>
+        {prevNum && <a href={`/characters/${prevNum}`}>Previous</a>}
+        {nextNum && <a href={`/characters/${nextNum}`}>Next >></a>}
+      </div>
+      <footer>
+        <a href="http://marvel.com">Data provided by Marvel. © 2019 MARVEL</a>
+      </footer>
     </div>
   );
 };
