@@ -4,12 +4,12 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import App from './react-app/App';
-import Data from './react-app/usersData';
+import Categories from './react-app/Categories';
+import Clue from './react-app/Clue';
+import { getClue, getRandomCategories } from './react-app/usersData';
 import fs from 'fs';
 import path from 'path';
 
-const functionName = 'react-express-ssr';
 const app = express();
 
 app.use(cors());
@@ -34,19 +34,36 @@ const Html = ({ body, styles, title }) => {
         `;
 };
 // <script src="/dev/bundle.js"></script>
-const routerBasePath =
+
+const makePath = functionName =>
   process.env.NODE_ENV === 'dev'
     ? `/${functionName}`
     : `/.netlify/functions/${functionName}/`;
+const categoriesPath = makePath('categories');
+const cluePath = makePath('clue');
 
-app.get([routerBasePath, routerBasePath + ':offset'], (req, res) => {
+app.get([categoriesPath, categoriesPath + ':offset'], (req, res) => {
   // console.log('params', req.params);
-  Data(req.params).then(users => {
+  getRandomCategories(req.params).then(categories => {
     const reactAppHtml = renderToString(
-      <App data={users} params={req.params} />
+      <Categories data={categories} params={req.params} />
     );
     const html = Html({
-      title: 'React SSR!',
+      title: 'React SSR via Functions!',
+      body: reactAppHtml
+    });
+    res.send(html);
+  });
+});
+app.get([cluePath + ':category/:value'], (req, res) => {
+  // console.log('params', req.params);
+  getClue(req.params).then(clue => {
+    console.log({ clue });
+    const reactAppHtml = renderToString(
+      <Clue data={clue} params={req.params} />
+    );
+    const html = Html({
+      title: 'React SSR via Functions!',
       body: reactAppHtml
     });
     res.send(html);

@@ -1,24 +1,34 @@
 import fetch from 'isomorphic-fetch';
-import md5 from 'md5';
-const defaultOpts = {
-  offset: 0,
-  limit: 5
-};
-export default function Data(opts) {
-  // return fetch('http://jservice.io/api/categories?count=5').then(data =>
-  return fetch(makeRequest('characters', opts)).then(data => data.json());
+
+// export default function Data(opts) {
+//   return fetch('http://jservice.io/api/categories?count=5').then(data =>
+//     // return fetch(makeRequest('characters', opts)).then(data =>
+//     data.json()
+//   );
+// }
+
+export function getClue(category, value) {
+  const obj = {
+    category,
+    value
+  };
+  return makeRequest('clues', obj);
+}
+export function getRandomCategories({
+  offset = Math.floor(Math.random() * 2000)
+}) {
+  const obj = {
+    count: 6,
+    offset
+  };
+  return makeRequest('categories', obj);
 }
 
-function makeRequest(endpoint, obj = defaultOpts) {
-  const ts = Number(new Date());
-  const MARVEL_PRIVATE = process.env.MARVEL_PRIVATE;
-  const apikey = process.env.MARVEL_PUBLIC;
-  const string4hash = ts + MARVEL_PRIVATE + apikey;
-  const hash = md5(string4hash);
-  obj = Object.assign(defaultOpts, obj, { ts, apikey, hash });
-  return (
-    'http://gateway.marvel.com/v1/public/' + endpoint + '?' + obj2string(obj)
-  );
+function makeRequest(endpoint, obj = {}) {
+  // obj = Object.assign(defaultOpts, obj, { ts, apikey, hash });
+  return fetch(
+    'http://jservice.io/api/' + endpoint + '?' + obj2string(obj)
+  ).then(data => data.json());
 }
 
 function obj2string(obj) {
